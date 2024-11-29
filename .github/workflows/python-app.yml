@@ -1,4 +1,4 @@
-name: Run Unit Tests
+name: CI - Run Unit Tests
 
 on:
     push:
@@ -10,21 +10,22 @@ on:
 
 jobs:
     test:
-        runs-on: ubuntu-latest # GitHub Actions runner to use for the job (ubuntu-latest, windows-latest, macOS-latest)
+        # GitHub Actions runner to use for the job 
+        # (ubuntu-latest, windows-latest, macOS-latest)
+        runs-on: ubuntu-latest
 
         steps:
-            - name: Check out repsitory code # Check out the repository code to the runner
+            - name: Check out repository code # Check out the repository code to the runner
               uses: actions/checkout@v3 # GitHub Actions to use for the step (actions/checkout@v3) 
 
-            - name: Set up Pyhton environment # Set up the Python environment for the job
+            - name: Set up Python environment # Set up the Python environment for the job
               uses: actions/setup-python@v4 # GitHub Actions to use for the step (actions/setup-python@v4)
               with:
-                  python-version: '3.12.6'
+                  python-version: '3.12'
             
             - name: Install dependencies
               run: |
                 python -m pip install --upgrade pip
-                pip install unittest
 
             - name: Run tests
               run: |
